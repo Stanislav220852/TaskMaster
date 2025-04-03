@@ -7,6 +7,7 @@ from app.keyboards.keyboards import main_kb
 from app.handlers.tasks import tasks_router
 from app.handlers.reminders import reminder_router
 from app.handlers.settings import settings_router
+from app.db.engine import create_table
 
 bot = Bot(token = settings.BOT_TOKEN)
 dp = Dispatcher()

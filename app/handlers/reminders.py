@@ -8,4 +8,4 @@ reminder_router = Router()
 
 @reminder_router.message(F.text == "⏰ Напоминания")
 async def reminder(messege:Message):
-    await messege.answer("Выбирите действие",reply_markup=reminders_keyboard)
+    await messege.answer("Выберите действие",reply_markup=reminders_keyboard)
