@@ -7,13 +7,16 @@ from app.keyboards.keyboards import main_kb
 from app.handlers.tasks import tasks_router
 from app.handlers.reminders import reminder_router
 from app.handlers.settings import settings_router
-from app.db.engine import create_table
+
+from app.user.services.user_services import UserServices
 
 bot = Bot(token = settings.BOT_TOKEN)
 dp = Dispatcher()
 
 @dp.message(CommandStart())
 async def start_bot(messege:Message):
+    user = await UserServices.add_user(telegram_id=messege.from_user.id,language=messege.from_user.language_code or "ru")
+
     await messege.answer(f'Hello {messege.from_user.first_name}',reply_markup=main_kb)
 
 async def main():

@@ -3,6 +3,7 @@ from sqlalchemy import ForeignKey
 from sqlalchemy.orm  import relationship ,Mapped, mapped_column
 from typing import TYPE_CHECKING
 
+
 if TYPE_CHECKING:
     from app.user.model.user_model import UserModel
     from app.reminder.model.reminder_model import ReminderModel
