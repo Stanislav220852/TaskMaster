@@ -13,5 +13,5 @@ class ReminderModel(Base):
         ForeignKey("taskmodels.id"),
         index=True
     )
-    task:Mapped["TaskModel"] = relationship(back_populates="task")
+    task:Mapped["TaskModel"] = relationship(back_populates="reminder")
     

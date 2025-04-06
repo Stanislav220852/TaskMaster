@@ -1,7 +1,7 @@
 from app.db.base import Base
 from sqlalchemy import ForeignKey
 from sqlalchemy.orm  import relationship ,Mapped, mapped_column
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING,List
 
 
 if TYPE_CHECKING:
@@ -13,9 +13,9 @@ class TaskModel(Base):
     deadline:Mapped[str]
     is_complited:Mapped[bool]
     user_id:Mapped[int] = mapped_column(
-        ForeignKey("usermodels.id"),
+        ForeignKey("usermodels.id",ondelete="cascade"),
         index=True
     )
     user:Mapped["UserModel"] = relationship(back_populates="task")
     
-    reminder:Mapped[list["ReminderModel"]] = relationship(back_populates="task")
+    reminder:Mapped[List["ReminderModel"]] = relationship("ReminderModel",back_populates="task")
