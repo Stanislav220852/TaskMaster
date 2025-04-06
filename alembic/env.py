@@ -8,9 +8,9 @@ from sqlalchemy.ext.asyncio import async_engine_from_config
 from alembic import context
 from app.db.base import Base
 from app.core.config import settings
+from app.reminder.model.reminder_model import ReminderModel
 from app.task.model.task_model import TaskModel
 from app.user.model.user_model import UserModel
-from app.reminder.model.reminder_model import ReminderModel
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
@@ -25,7 +25,6 @@ if config.config_file_name is not None:
 # for 'autogenerate' support
 # from myapp import mymodel
 # target_metadata = mymodel.Base.metadata
-print("Список таблиц в Base.metadata:", Base.metadata.tables.keys())
 target_metadata = Base.metadata
 
 config.set_main_option("sqlalchemy.url",settings.DB_URL)
