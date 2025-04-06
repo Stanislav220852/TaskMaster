@@ -9,9 +9,9 @@ if TYPE_CHECKING:
     from app.reminder.model.reminder_model import ReminderModel
 
 class TaskModel(Base):
-    title:Mapped[str]
-    deadline:Mapped[str]
-    is_complited:Mapped[bool]
+    title:Mapped[str] = mapped_column(default="Задача")
+    deadline:Mapped[str] = mapped_column(default="0000-00-00")
+    is_complited:Mapped[bool] = mapped_column(default=False)
     user_id:Mapped[int] = mapped_column(
         ForeignKey("usermodels.id",ondelete="cascade"),
         index=True

@@ -7,13 +7,12 @@ from sqlalchemy import BigInteger
 
 class UserServices:
     @classmethod
-    async def add_user(cls,telegram_id:BigInteger,language:str = "ru"):
+    async def add_user(cls,telegram_id:int,language:str = "ru"):
         async with new_session() as session:
             result = await session.execute(select(UserModel).where(UserModel.telegram_id == id))
             user = result.scalars().first()
             if not user:
-                task = TaskModel()
-                reminder = ReminderModel()
+                
                 user = UserModel(telegram_id =telegram_id,language= language)
                 
             session.add(user)

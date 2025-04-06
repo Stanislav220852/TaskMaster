@@ -1,6 +1,9 @@
 from sqlalchemy.ext.asyncio import create_async_engine,async_sessionmaker
 from app.core.config import settings
 from app.db.base import Base
+from app.reminder.model.reminder_model import ReminderModel
+from app.task.model.task_model import TaskModel
+from app.user.model.user_model import UserModel
 
 
 engine = create_async_engine(

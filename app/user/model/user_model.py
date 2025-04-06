@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 
 
 class UserModel(Base):
-    telegram_id = Mapped[BigInteger]
+    telegram_id =Mapped[int]= mapped_column(nullable=False, unique=True)
     language = Mapped[str]
 
     task: Mapped[list["TaskModel"]] = relationship(back_populates="user")
